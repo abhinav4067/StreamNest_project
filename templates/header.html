@@ -1,0 +1,76 @@
+{% load static %}
+<!-- header (hidden style) -->
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="header__content">
+        <button class="header__menu" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <a href="{% url 'index3' %}" class="header__logo"><h1>StreamNest</h1></a>
+
+        <ul class="header__nav">
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="{% url 'index3' %}">Home</a>
+          </li>
+
+          {% comment %} <li class="header__nav-item">
+            <a class="header__nav-link" href="{% url 'category' %}">Popular</a>
+          </li> {% endcomment %}
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="{% url 'about' %}">About us</a>
+          </li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="{% url 'all-series' %}">Tv Shows</a>
+          </li>
+
+          <li class="header__nav-item">
+            <a class="header__nav-link header__nav-link--live" href="{% url 'movies' %}">Movies</a>
+          </li>
+        </ul>
+
+        <div class="header__actions">
+          <form action="{% url 'search' %}" class="header__form" method="post">
+            {% csrf_token %}
+            <input class="header__form-input" name="tosearch" type="text" placeholder="I'm looking for..." />
+            <button class="header__form-btn" name="search" type="submit">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M21.71,20.29,18,16.61A9,9,0,1,0,16.61,18l3.68,3.68a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM11,18a7,7,0,1,1,7-7A7,7,0,0,1,11,18Z" />
+              </svg>
+            </button>
+          </form>
+          {% if not user.is_authenticated %}
+          <a href="{% url 'signin' %}" class="header__user">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <!-- !Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+              <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
+          </a>
+          {% else %}
+          <a href="{% url 'SignOut' %}" class="header__user">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <!-- !Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+              <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+            </svg>
+          </a>
+          {% endif %}
+          {% if  user.is_authenticated %}
+          &nbsp;<ul>
+            <li class="header__nav-item">
+              <a class="header__nav-link header__nav-link--live" href="{% url 'profile' %}">
+                <div class="profile__avatar">
+                  <img src="{% static 'images/avatar.svg' %}" alt="" />
+                </div>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end header -->

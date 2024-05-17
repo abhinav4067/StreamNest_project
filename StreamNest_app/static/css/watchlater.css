@@ -1,0 +1,22 @@
+.watch-later-button {
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
+    background-color: #0c04a0; /* Netflix red color */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add smooth transition on hover */
+  }
+  
+  .watch-later-button:hover {
+    transform: scale(1.05); /* Add slight scale effect on hover */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+  }
+  
+  .plus {
+    font-size: 22px; /* Adjust size as needed */
+    color: #fff; /* White color */
+  }
+  
